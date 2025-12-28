@@ -44,6 +44,7 @@ def selecionar_plataforma(nome, cor_ativa, botao_ref, hover_cor=None):
     global PLATAFORMA_ATUAL
     PLATAFORMA_ATUAL = nome
     resetar_botoes()
+    
     config = {
         "fg_color": cor_ativa, "text_color": "white",
         "border_width": 2 if cor_ativa == "#000000" else 0, 
@@ -51,7 +52,13 @@ def selecionar_plataforma(nome, cor_ativa, botao_ref, hover_cor=None):
     }
     if hover_cor: config["hover_color"] = hover_cor
     botao_ref.configure(**config)
+    
+    # --- CORREÇÃO DE FOCO ---
+    entry_url.delete(0, 'end') # Limpa qualquer link antigo
     entry_url.configure(placeholder_text=f"Cole seu link do {nome} aqui...")
+    
+    # Força o cursor a entrar na caixa de texto imediatamente
+    app.after(50, lambda: entry_url.focus())
 
 def atualizar_progresso_ui(dicionario_dados):
     if app:
@@ -161,6 +168,7 @@ frame_plat.grid_columnconfigure((0,1,2), weight=1)
 # Input
 entry_url = ctk.CTkEntry(app, height=50, placeholder_text="Selecione a plataforma e cole o link...", font=("Arial", 14))
 entry_url.pack(pady=(10, 5), padx=20, fill="x")
+entry_url.bind("<Button-1>", lambda event: entry_url.focus())
 
 # --- OPÇÕES ---
 frame_opcoes = ctk.CTkFrame(app, fg_color="transparent")
