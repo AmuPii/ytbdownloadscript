@@ -53,12 +53,16 @@ def selecionar_plataforma(nome, cor_ativa, botao_ref, hover_cor=None):
     if hover_cor: config["hover_color"] = hover_cor
     botao_ref.configure(**config)
     
-    # --- CORREÇÃO DE FOCO ---
-    entry_url.delete(0, 'end') # Limpa qualquer link antigo
-    entry_url.configure(placeholder_text=f"Cole seu link do {nome} aqui...")
+    # Tira o foco de qualquer lugar (foca no vazio)
+    app.focus_set() 
     
-    # Força o cursor a entrar na caixa de texto imediatamente
-    app.after(50, lambda: entry_url.focus())
+    # Aguarda um "respiro" do processador e devolve o foco para a entrada
+    def restaurar_foco():
+        entry_url.focus_force()
+        # Comando extra para garantir que o Windows entenda que a janela é a principal
+        app.lift() 
+        
+    app.after(200, restaurar_foco)
 
 def atualizar_progresso_ui(dicionario_dados):
     if app:
@@ -168,7 +172,6 @@ frame_plat.grid_columnconfigure((0,1,2), weight=1)
 # Input
 entry_url = ctk.CTkEntry(app, height=50, placeholder_text="Selecione a plataforma e cole o link...", font=("Arial", 14))
 entry_url.pack(pady=(10, 5), padx=20, fill="x")
-entry_url.bind("<Button-1>", lambda event: entry_url.focus())
 
 # --- OPÇÕES ---
 frame_opcoes = ctk.CTkFrame(app, fg_color="transparent")
@@ -188,4 +191,5 @@ btn_folder = ctk.CTkButton(frame_actions, text="ABRIR PASTA", height=60, font=("
 
 resetar_botoes()
 selecionar_plataforma("YouTube", CORES["youtube"], btn_yt)
+app.after(200, lambda: entry_url.focus_force())
 app.mainloop()
