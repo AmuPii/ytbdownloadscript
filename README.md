@@ -1,91 +1,81 @@
-# 📥 Downloader do Herickão - Multi-Platform Video Downloader
+# 🚀 Downloader do Herickão
 
-Um aplicativo desktop moderno, desenvolvido em Python com **CustomTkinter**, para baixar vídeos e áudios das principais redes sociais com alta qualidade. O projeto foca em simplicidade, design limpo (Dark Mode) e organização automática de arquivos.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![FFmpeg](https://img.shields.io/badge/FFmpeg-Enabled-green)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 
-## 🚀 Funcionalidades
+**Sua suíte completa para baixar mídias da internet e converter vídeos.** Uma aplicação desktop moderna, rápida e com tema escuro, desenvolvida para facilitar o download de vídeos em alta qualidade e a criação de GIFs.
 
-- **Multi-Plataforma:** Suporte para YouTube, TikTok, Instagram, Facebook, Twitter (X) e Twitch.
-- **Organização Inteligente:** Cria pastas separadas automaticamente para cada plataforma (ex: `Downloads/TikTok`, `Downloads/YouTube`).
-- **Seleção de Qualidade:** Escolha entre "Melhor Qualidade", "1080p", "720p" ou apenas áudio "MP3".
-- **Conversão Automática:** Converte vídeos para áudio MP3 automaticamente utilizando FFmpeg.
-- **Interface Moderna:** UI amigável e responsiva com tema escuro (Dark Mode).
-- **Sem Anúncios:** Download direto e rápido, sem pop-ups ou limitações de sites web.
+---
 
-## 📋 Plataformas Suportadas
+## ✨ Funcionalidades Principais
 
-| Plataforma | Vídeo | Áudio (MP3) | Obs. |
-| :--- | :---: | :---: | :--- |
-| **YouTube** | ✅ | ✅ | Suporta playlists e vídeos longos. |
-| **TikTok** | ✅ | ✅ | Baixa sem marca d'água (via API). |
-| **Instagram** | ✅ | ✅ | Reels e vídeos do feed. |
-| **Facebook** | ✅ | ✅ | Vídeos públicos. |
-| **Twitter (X)** | ✅ | ✅ | |
-| **Twitch** | ✅ | ✅ | Clips e VODs. |
+### 📥 Download Multiplataforma
+Baixe vídeos e áudios das maiores redes sociais com apenas um link:
+| Plataforma | Suporte |
+| :--- | :--- |
+| **YouTube** | ✅ Vídeo (4K/1080p) & Áudio (MP3) |
+| **TikTok** | ✅ Sem marca d'água |
+| **Instagram** | ✅ Reels e Vídeos |
+| **Facebook** | ✅ Vídeos Públicos |
+| **Twitter / X** | ✅ Clipes e Mídias |
+| **Twitch** | ✅ Clipes e VODs |
 
-## 🛠️ Instalação e Uso (Para Usuários)
+### 🎞️ [NOVO] Conversor de GIF Integrado
+Transforme seus vídeos locais em GIFs animados diretamente pelo app!
+* **Qualidade:** Utiliza filtro *Lanczos* para máxima fidelidade de cor.
+* **Performance:** Processamento em segundo plano (não trava a tela).
+* **Simples:** Basta selecionar o arquivo MP4/MKV e clicar em converter.
 
-1. Baixe o arquivo `.zip` ou o executável fornecido.
-2. **Importante:** Mantenha a pasta `ffmpeg` no mesmo local do arquivo `.exe`. A estrutura deve ser:
-   ```text
-   📁 Pasta do App/
-    ├── DownloaderHerickao.exe
-    └── 📁 ffmpeg/
-         └── 📁 bin/
-              └── ffmpeg.exe
-              
-Execute o DownloaderHerickao.exe.
+### ⚙️ Outros Recursos
+* **Seletor de Qualidade:** Escolha entre "Melhor Qualidade", "1080p", "720p" ou extraia apenas o áudio "MP3".
+* **Abertura Rápida:** Botão direto para abrir a pasta de Downloads.
+* **Auto-Update:** Ferramenta integrada para atualizar as bibliotecas de download (`yt-dlp`).
 
-Selecione a plataforma, cole o link e clique em BAIXAR AGORA.
+---
 
-💻 Configuração para Desenvolvedores
-Se você deseja rodar o código fonte ou modificá-lo:
+## 🚀 O que há de novo na v2.0?
 
-Pré-requisitos
-Python 3.8 ou superior.
+Esta versão traz uma refatoração completa focada em estabilidade e novas ferramentas:
 
-FFmpeg instalado no sistema ou na pasta raiz do projeto.
+* ✅ **Nova Interface:** Janela expandida e harmonizada com tema *Dark Blue*.
+* ✅ **Módulo GIF:** Nova seção dedicada para conversão de mídia local.
+* ✅ **Fix de Foco:** Corrigido bug onde a janela perdia o foco ao alternar entre plataformas.
+* ✅ **Multithreading:** Downloads e conversões agora rodam em *threads* separadas, garantindo que o app nunca congele.
+* ✅ **Portabilidade:** Estrutura de pastas otimizada para execução fácil no Windows.
 
-1. Clonar e Instalar Dependências
-Crie um ambiente virtual (recomendado) e instale as bibliotecas necessárias:
+---
 
-Bash
+## 📦 Como Instalar e Rodar
 
-pip install customtkinter yt-dlp requests
-(Ou use o arquivo requirements.txt se tiver criado um)
+Não é necessário instalar Python se você estiver usando a versão compilada (`.exe`).
 
-2. Estrutura de Arquivos Necessária
-Certifique-se de que o executável do FFmpeg esteja em ffmpeg/bin/ffmpeg.exe na raiz do projeto para garantir a portabilidade.
+1.  Baixe o arquivo `.zip` da última versão.
+2.  Extraia a pasta em qualquer lugar do seu computador.
+3.  **IMPORTANTE:** Certifique-se de que o arquivo `ffmpeg.exe` esteja dentro da mesma pasta do `DownloaderHerickao.exe`.
+4.  Execute o `DownloaderHerickao.exe`.
 
-3. Rodar o App
-Bash
+### Estrutura da Pasta
+```
+📂 DownloaderHerickao/
+ ├── 📄 DownloaderHerickao.exe  (Clique aqui para abrir)
+ ├── 📄 ffmpeg.exe              (Motor de conversão - NÃO APAGUE)
+ └── 📂 _internal               (Arquivos do sistema)
+```
+## 🛠️ Tecnologias Utilizadas
+Este projeto foi construído com ferramentas open-source poderosas:
 
-python youtube_downloader_window.py
-🏗️ Como Compilar (Criar .exe)
-Para transformar o script Python em um executável Windows portátil:
+Linguagem: Python 3
 
-Instale o PyInstaller:
+Interface Gráfica: CustomTkinter (Modern UI)
 
-Bash
+Engine de Download: yt-dlp 
 
-pip install pyinstaller
-Utilize o script de build incluso ou rode o comando abaixo (ajustando o caminho do CustomTkinter):
+Processamento de Mídia: FFmpeg
 
-Bash
-
-pyinstaller --noconsole --onefile --windowed --add-data "CAMINHO_DO_CUSTOMTKINTER;customtkinter" youtube_downloader_window.py
-Após compilar, copie manualmente a pasta ffmpeg para dentro da pasta dist criada, ao lado do executável gerado.
-
-🧩 Estrutura do Código
-O projeto é modularizado para facilitar a manutenção:
-
-youtube_downloader_window.py: Interface Gráfica (GUI) e lógica principal.
-
-utils.py: Funções utilitárias (logger, busca de FFmpeg, conversões).
-
-engine_*.py: Módulos específicos para lidar com a lógica de download de cada plataforma (YouTube, TikTok, etc.).
-
-⚖️ Aviso Legal
-Este software foi desenvolvido para fins educacionais e de uso pessoal. O download de conteúdo protegido por direitos autorais sem permissão pode violar os termos de serviço das plataformas. Utilize com responsabilidade.
-
+## 📝 Licença
 Desenvolvido por Herickão.
-            
+
+Uso livre para fins pessoais.
+
+<img width="702" height="812" alt="image" src="https://github.com/user-attachments/assets/68e008c5-2e92-4218-b718-6a030f1505be" />
