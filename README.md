@@ -4,7 +4,7 @@
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-Enabled-green)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 
-**Sua suíte completa para baixar mídias da internet e converter vídeos.** Uma aplicação desktop moderna, rápida e com tema escuro, desenvolvida para facilitar o download de vídeos em alta qualidade e a criação de GIFs.
+**Sua suíte completa para baixar mídias da internet e converter vídeos.** Um App Caseiro para desktop, rápida e com tema escuro, desenvolvida para facilitar o download de vídeos em alta qualidade e a criação de GIFs.
 
 ---
 
@@ -24,7 +24,7 @@ Baixe vídeos e áudios das maiores redes sociais com apenas um link:
 ### 🎞️ [NOVO] Conversor de GIF Integrado
 Transforme seus vídeos locais em GIFs animados diretamente pelo app!
 * **Qualidade:** Utiliza filtro *Lanczos* para máxima fidelidade de cor.
-* **Performance:** Processamento em segundo plano (não trava a tela).
+* **Performance:** Processamento em segundo plano (não trava o pc nem sobre-usa Recursos.).
 * **Simples:** Basta selecionar o arquivo MP4/MKV e clicar em converter.
 
 ### ⚙️ Outros Recursos
@@ -36,7 +36,7 @@ Transforme seus vídeos locais em GIFs animados diretamente pelo app!
 
 ## 🚀 O que há de novo na v2.0?
 
-Esta versão traz uma refatoração completa focada em estabilidade e novas ferramentas:
+traz uma refatoração completa focada em estabilidade e novas ferramentas:
 
 * ✅ **Nova Interface:** Janela expandida e harmonizada com tema *Dark Blue*.
 * ✅ **Módulo GIF:** Nova seção dedicada para conversão de mídia local.
@@ -50,7 +50,7 @@ Esta versão traz uma refatoração completa focada em estabilidade e novas ferr
 
 Não é necessário instalar Python se você estiver usando a versão compilada (`.exe`).
 
-1.  Baixe o arquivo `.zip` da última versão.
+1.  Baixe o arquivo `.zip` da última versão. (`presente na aba Releases`)
 2.  Extraia a pasta em qualquer lugar do seu computador.
 3.  **IMPORTANTE:** Certifique-se de que o arquivo `ffmpeg.exe` esteja dentro da mesma pasta do `DownloaderHerickao.exe`.
 4.  Execute o `DownloaderHerickao.exe`.
@@ -63,7 +63,7 @@ Não é necessário instalar Python se você estiver usando a versão compilada 
  └── 📂 Download               (será criado após rodar o .exe pela primeira vez)
 ```
 ## 🛠️ Tecnologias Utilizadas
-Este projeto foi construído com ferramentas open-source poderosas:
+Este projeto foi construído com ferramentas open-source:
 
 Linguagem: Python 3
 
