@@ -60,7 +60,7 @@ Não é necessário instalar Python se você estiver usando a versão compilada 
 📂 DownloaderHerickao/
  ├── 📄 DownloaderHerickao.exe  (Clique aqui para abrir)
  ├── 📄 ffmpeg.exe              (Motor de conversão - NÃO APAGUE)
- └── 📂 _internal               (Arquivos do sistema)
+ └── 📂 Download               (será criado após rodar o .exe pela primeira vez)
 ```
 ## 🛠️ Tecnologias Utilizadas
 Este projeto foi construído com ferramentas open-source poderosas:
