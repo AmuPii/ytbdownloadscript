@@ -18,10 +18,12 @@ def baixar(url, output_dir, hook_progresso, qualidade):
     else: # "Melhor"
         format_str = "bestvideo+bestaudio/best"
 
-    # 2. Localiza a pasta do FFmpeg
+    # 2. Localiza a pasta do FFmpeg com SEGURANÇA
     caminho_ffmpeg = utils.get_ffmpeg_path()
     ffmpeg_location = None
-    if "ffmpeg.exe" in caminho_ffmpeg and os.path.exists(caminho_ffmpeg):
+    
+    # AQUI ESTAVA O ERRO: Se caminho_ffmpeg fosse None, o "if" abaixo quebrava
+    if caminho_ffmpeg and "ffmpeg.exe" in caminho_ffmpeg and os.path.exists(caminho_ffmpeg):
         ffmpeg_location = os.path.dirname(caminho_ffmpeg)
 
     # 3. Configurações do yt-dlp
@@ -32,7 +34,7 @@ def baixar(url, output_dir, hook_progresso, qualidade):
         'quiet': True,
         'no_warnings': True,
         
-        # Aponta para a pasta ./ffmpeg/bin/ para garantir que junte áudio+vídeo
+        # Aponta para a pasta ./ffmpeg/bin/ (se existir)
         'ffmpeg_location': ffmpeg_location,
 
         # Conversão de áudio se for MP3
@@ -42,13 +44,15 @@ def baixar(url, output_dir, hook_progresso, qualidade):
             'preferredquality': '192',
         }] if qualidade == "MP3" else [],
         
-        # Garante saída em MP4 para vídeo
+        # Garante saída em MP4 para vídeo (exceto se for MP3)
         'merge_output_format': 'mp4' if qualidade != "MP3" else None,
     }
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            ydl.extract_info(url, download=True)
+            # Captura e RETORNA as informações
+            info_dict = ydl.extract_info(url, download=True)
+            return info_dict
 
     except Exception as e:
         raise e

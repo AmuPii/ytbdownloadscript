@@ -107,7 +107,9 @@ def thread_download():
         
         app.after(0, lambda: finalizar_download(True, ""))
     except Exception as e:
-        app.after(0, lambda: finalizar_download(False, str(e)))
+        erro_msg = str(e)
+        if not erro_msg: erro_msg = "Erro desconhecido (None)"
+        app.after(0, lambda: finalizar_download(False, erro_msg))
 
 # === LÓGICA DO CONVERSOR DE GIF ===
 
