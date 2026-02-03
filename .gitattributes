@@ -1,0 +1,8 @@
+# Diga ao GitHub para ignorar HTML e TeX nas estatísticas
+*.html linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+*.tex linguist-vendored
+
+# Forçar que arquivos .py sejam detectados como Python
+*.py linguist-language=Python
