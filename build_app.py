@@ -1,26 +1,40 @@
 import PyInstaller.__main__
 import customtkinter
 import os
+import sys
 
-# 1. Localiza onde o CustomTkinter está instalado no seu PC
+# 1. Localiza onde o CustomTkinter está instalado
 path_ctk = os.path.dirname(customtkinter.__file__)
 
-# 2. Define o nome do arquivo principal e do executável
-arquivo_principal = "youtube_downloader_window.py" # <--- VERIFIQUE SE O NOME DO SEU ARQUIVO É ESSE
+# 2. Configurações
+arquivo_principal = "youtube_downloader_window.py" 
 nome_app = "DownloaderHerickao"
 
-# 3. Executa o PyInstaller com as configurações corretas
-print("Iniciando a compilação... Isso pode demorar uns minutos.")
+# 3. Executa a compilação
+print(">>> Iniciando a compilação...")
+print(">>> Isso vai incluir todas as bibliotecas necessárias.")
 
-PyInstaller.__main__.run([
+# Lista de comandos do PyInstaller
+comandos = [
     arquivo_principal,
     '--name=%s' % nome_app,
     '--onefile',               # Cria um único arquivo .exe
-    '--noconsole',             # Não mostra a tela preta do CMD ao fundo
-    '--windowed',              # Modo janela
-    f'--add-data={path_ctk};customtkinter', # Importante: Inclui os temas do CustomTkinter
-    '--clean',                 # Limpa cache anterior
-    # '--icon=icone.ico'       # Se tiver um ícone (.ico), descomente esta linha
-])
+    '--noconsole',             # Remove a tela preta
+    '--windowed',              
+    '--clean',                 # Limpa cache antigo para evitar bugs
+    
+    # IMPORTANTE 1: Inclui o CustomTkinter
+    f'--add-data={path_ctk};customtkinter', 
+    
+    # IMPORTANTE 2: Força o PyInstaller a pegar TUDO do yt-dlp 
+    # (Evita erro de "extractor not found")
+    '--collect-all=yt_dlp',
+    
+    # Opcional: Se tiver icone, tire a # da linha abaixo
+    # '--icon=seu_icone.ico'   
+]
 
-print("\nCompilação finalizada! Verifique a pasta 'dist'.")
+PyInstaller.__main__.run(comandos)
+
+print("\n>>> SUCESSO! Verifique a pasta 'dist'.")
+print(">>> IMPORTANTE: Não esqueça de colocar o FFmpeg junto com o .exe!")
