@@ -16,6 +16,7 @@ env/
 ENV/
 
 # Build do PyInstaller
+.dist/
 build/
 dist/
 *.spec.bak
