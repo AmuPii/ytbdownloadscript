@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "downloader-herickao"
+version = "4.0.0"
+description = "Downloader de mídia desktop com CustomTkinter e yt-dlp"
+requires-python = ">=3.10"
+dependencies = [
+    "customtkinter>=5.2.2",
+    "yt-dlp>=2025.1.15",
+    "Pillow>=10.0.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.0"]
+
+[tool.setuptools]
+packages = ["core"]

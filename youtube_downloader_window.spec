@@ -1,12 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import collect_all
 
-
+tmp_ret = collect_all('yt_dlp')
+ctk_ret = collect_all('customtkinter')
 a = Analysis(
     ['youtube_downloader_window.py'],
     pathex=[],
-    binaries=[],
-    datas=[('ffmpeg', 'ffmpeg')],
-    hiddenimports=[],
+    binaries=tmp_ret[1] + ctk_ret[1],
+    datas=[('ffmpeg', 'ffmpeg')] + tmp_ret[0] + ctk_ret[0],
+    hiddenimports=tmp_ret[2] + ctk_ret[2],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

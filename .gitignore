@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.log
+
+# Ambiente virtual
+venv/
+.venv/
+env/
+ENV/
+
+# Build do PyInstaller
+build/
+dist/
+*.spec.bak
+
+# Arquivos gerados pelo app
+downloads/
+Download/
+history.json
+*.mp4
+*.mkv
+*.mp3
+*.gif
+*.webm
+*.part
+*.ytdl
+
+# FFmpeg (muito pesado – não subir)
+ffmpeg/
+ffmpeg.exe
+ffprobe.exe
+ffplay.exe
+
+# Sistema / IDE
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Outros
+settings.json.bak
+*.tmp

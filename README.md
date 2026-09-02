@@ -34,7 +34,7 @@ Transforme seus vídeos locais em GIFs animados diretamente pelo app!
 
 ---
 
-## 🚀 O que há de novo na v2.0?
+## 🚀 O que há de novo na v4.0?
 
 traz uma refatoração completa focada em estabilidade e novas ferramentas:
 
@@ -43,6 +43,20 @@ traz uma refatoração completa focada em estabilidade e novas ferramentas:
 * ✅ **Fix de Foco:** Corrigido bug onde a janela perdia o foco ao alternar entre plataformas.
 * ✅ **Multithreading:** Downloads e conversões agora rodam em *threads* separadas, garantindo que o app nunca congele.
 * ✅ **Portabilidade:** Estrutura de pastas otimizada para execução fácil no Windows.
+* ✅ **Fila, histórico e cancelamento:** vários links podem ser enfileirados e o download atual pode ser interrompido.
+* ✅ **Preview informativo:** título, duração, canal e visualizações antes de baixar.
+* ✅ **Atualizações seguras:** no script, o botão atualiza `yt-dlp` via pip; no `.exe`, baixa o standalone e informa a limitação da biblioteca embutida.
+
+## 🔄 Manutenção do yt-dlp
+
+Sites mudam com frequência. Use o botão **Atualizar** regularmente ou execute:
+
+```powershell
+python -m pip install --upgrade yt-dlp
+```
+
+Para preparar o ambiente de desenvolvimento: `python -m pip install -r requirements.txt`.
+O aplicativo registra detalhes técnicos em `app.log`; a interface mostra uma mensagem curta e amigável em caso de erro.
 
 ---
 
@@ -52,7 +66,7 @@ Não é necessário instalar Python se você estiver usando a versão compilada 
 
 1.  Baixe o arquivo `.zip` da última versão. (`presente na aba Releases`)
 2.  Extraia a pasta em qualquer lugar do seu computador.
-3.  **IMPORTANTE:** Certifique-se de que o arquivo `ffmpeg.exe` esteja dentro da mesma pasta do `DownloaderHerickao.exe`.
+3.  **IMPORTANTE:** A distribuição inclui `ffmpeg/bin/ffmpeg.exe`. Ao executar o script, mantenha essa pasta no projeto ou instale FFmpeg no `PATH`.
 4.  Execute o `DownloaderHerickao.exe`.
 
 ### Estrutura da Pasta

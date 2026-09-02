@@ -1,11 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 from PyInstaller.utils.hooks import collect_all
 
-datas = [('C:\\Users\\zNaru\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\customtkinter', 'customtkinter')]
-binaries = []
-hiddenimports = []
 tmp_ret = collect_all('yt_dlp')
-datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
+ctk_ret = collect_all('customtkinter')
+datas = [('ffmpeg', 'ffmpeg')] + tmp_ret[0] + ctk_ret[0]
+binaries = tmp_ret[1] + ctk_ret[1]
+hiddenimports = tmp_ret[2] + ctk_ret[2]
 
 
 a = Analysis(

@@ -29,6 +29,7 @@ comandos = [
     # IMPORTANTE 2: Força o PyInstaller a pegar TUDO do yt-dlp 
     # (Evita erro de "extractor not found")
     '--collect-all=yt_dlp',
+    '--add-data=ffmpeg;ffmpeg',  # Inclui FFmpeg no executável onefile
     
     # Opcional: Se tiver icone, tire a # da linha abaixo
     # '--icon=seu_icone.ico'   

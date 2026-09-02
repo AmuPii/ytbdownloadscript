@@ -1,1 +1,6 @@
-{"platform": "YouTube"}
+{
+  "platform": "Twitter",
+  "download_dir": "C:\\Users\\zNaru\\OneDrive\\Documentos\\GitHub\\ytbdownloadscript\\downloads",
+  "theme": "dark-blue",
+  "appearance": "System"
+}
