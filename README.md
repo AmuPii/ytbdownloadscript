@@ -93,3 +93,24 @@ Desenvolvido por Herickão.
 Uso livre para fins pessoais.
 
 <img width="702" height="812" alt="image" src="https://github.com/user-attachments/assets/68e008c5-2e92-4218-b718-6a030f1505be" />
+
+---
+
+## Criar o executável
+
+Use uma instalação completa do Python para Windows. A versão embutida
+(`embeddable package`) não contém todos os arquivos de Tcl/Tk necessários para
+o CustomTkinter.
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[build]"
+.\.venv\Scripts\python.exe build_app.py
+```
+
+O resultado será criado em `dist\DownloaderHerickao.exe`. O script verifica o
+Tcl/Tk antes do build e inclui explicitamente suas DLLs, o CustomTkinter, o
+yt-dlp e a pasta `ffmpeg`.
+
+Se a verificação informar que o Tcl/Tk está ausente, reinstale o Python pelo
+instalador oficial e mantenha selecionada a opção **tcl/tk and IDLE**.

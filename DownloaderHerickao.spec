@@ -1,16 +1,28 @@
 # -*- mode: python ; coding: utf-8 -*-
-from PyInstaller.utils.hooks import collect_all
+from pathlib import Path
 
-tmp_ret = collect_all('yt_dlp')
-ctk_ret = collect_all('customtkinter')
-datas = [('ffmpeg', 'ffmpeg')] + tmp_ret[0] + ctk_ret[0]
-binaries = tmp_ret[1] + ctk_ret[1]
-hiddenimports = tmp_ret[2] + ctk_ret[2]
+from PyInstaller.utils.hooks import collect_all
+from PyInstaller.utils.hooks.tcl_tk import tcltk_info
+
+project_root = Path(SPECPATH)
+yt_dlp_data, yt_dlp_binaries, yt_dlp_imports = collect_all("yt_dlp")
+ctk_data, ctk_binaries, ctk_imports = collect_all("customtkinter")
+
+datas = [(str(project_root / "ffmpeg"), "ffmpeg"), *yt_dlp_data, *ctk_data]
+binaries = [*yt_dlp_binaries, *ctk_binaries]
+hiddenimports = ["_tkinter", *yt_dlp_imports, *ctk_imports]
+
+for shared_library in (
+    tcltk_info.tcl_shared_library,
+    tcltk_info.tk_shared_library,
+):
+    if shared_library:
+        binaries.append((shared_library, "."))
 
 
 a = Analysis(
-    ['youtube_downloader_window.py'],
-    pathex=[],
+    [str(project_root / "youtube_downloader_window.py")],
+    pathex=[str(project_root)],
     binaries=binaries,
     datas=datas,
     hiddenimports=hiddenimports,
@@ -33,7 +45,7 @@ exe = EXE(
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
+    upx=False,
     upx_exclude=[],
     runtime_tmpdir=None,
     console=False,
